@@ -1,0 +1,38 @@
+<ion-header>
+    <ion-toolbar color="secondary">
+        <ion-title>
+            Menu
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid class="text">
+        <ion-row>
+            <ion-col>
+                <div><img src="/assets/img/cappuccino.png"></div>
+
+                <ion-label>Cappuccino</ion-label>
+                <ion-button expand="full" color="secondary" (click)="extras()">R25</ion-button>
+            </ion-col>
+            <ion-col>
+                <div><img src="/assets/img/espresso2.png"></div>
+                <div> Espresso </div>
+                <ion-button expand="full" color="secondary" (click)="extras1()">R18</ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <div><img src="/assets/img/latte.png"></div>
+                <div>Latte</div>
+                <ion-button expand="full" color="secondary" (click)="extras2()">R28</ion-button>
+            </ion-col>
+            <ion-col>
+                <div><img src="/assets/img/longB.png"></div>
+                <div>Long Black</div>
+                <ion-button expand="full" color="secondary" (click)="extras3()">R15</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

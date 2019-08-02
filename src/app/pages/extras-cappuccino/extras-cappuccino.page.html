@@ -1,0 +1,114 @@
+<ion-header>
+    <ion-toolbar color="secondary" mode="ios">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="menu"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Extras</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div *ngIf="page1">
+        <div class="image">
+            <img src="/assets/img/cappuccino.png">
+        </div>
+
+        <ion-item lines="none">
+            <ion-icon slot="end" name="remove-circle-outline" class="ion-no-padding" class="ion-no-margin" (click)="minus()"></ion-icon>
+            <ion-note slot="end" class="ion-no-padding" class="ion-no-margin">{{increment}}</ion-note>
+            <ion-icon slot="end" name="add-circle-outline" (click)="add()"></ion-icon>
+            <ion-label>Quantity</ion-label>
+        </ion-item>
+
+        <ion-item>
+            <ion-label class="my-label">Option</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>Size</ion-label>
+            <ion-select interface="popover" [(ngModel)]="size">
+                <ion-select-option value="Cup" selected>Cup</ion-select-option>
+                <ion-select-option value="Mug">Mug</ion-select-option>
+                <ion-select-option value="Takeaway Cup">Takeaway Cup</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Milk</ion-label>
+            <ion-select interface="popover" [(ngModel)]="Milk">
+                <ion-select-option value="No" selected>No</ion-select-option>
+
+                <ion-select-option value="Full Cream">Full Cream</ion-select-option>
+                <ion-select-option value="Skim">Skim</ion-select-option>
+                <ion-select-option value="Soy">Soy</ion-select-option>
+                <ion-select-option value="Aimond">Aimond</ion-select-option>
+                <ion-select-option value="Lactose Free">Lactose Free</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Sugar</ion-label>
+            <ion-select interface="popover" [(ngModel)]="Sugar">
+                <ion-select-option value="No" selected>No</ion-select-option>
+                <ion-select-option value="1 Cube">1 Cube</ion-select-option>
+                <ion-select-option value="2 Cube">2 Cube</ion-select-option>
+                <ion-select-option value="3 Cube">3 Cube</ion-select-option>
+                <ion-select-option value="4 Cube">4 Cube</ion-select-option>
+                <ion-select-option value="5 Cube">5 Cube</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Syrup</ion-label>
+            <ion-select interface="popover" [(ngModel)]="Syrup">
+                <ion-select-option value="No" selected>No</ion-select-option>
+                <ion-select-option value="Vanilla">Vanilla</ion-select-option>
+                <ion-select-option value="Chocolate">Chocolate</ion-select-option>
+                <ion-select-option value="Caremel">Caremel</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <br>
+        <ion-button expand="full" color="secondary" (click)="Order()">Buy</ion-button>
+    </div>
+    <div *ngIf="page2">
+        <hr>
+        <h1 style="text-align: center;">Invoice</h1>
+        <hr>
+        <div style="text-align: right; padding-right: 20px;">
+            <span>{{name}} {{surname}}</span><br>
+            <span>{{today | date: 'dd:MMM:y h:mm a'}}</span><br>
+            <span>Ref {{number}}</span>
+
+        </div>
+
+        <ion-list>
+            <ion-item>
+                {{ itemName }}
+                <ion-label slot="end" text-right>R {{ price}}</ion-label>
+            </ion-item>
+            <ion-item *ngIf="optionSize">
+                Size
+                <span slot="end">{{ sizeA }}</span>
+            </ion-item>
+            <ion-item *ngIf="optionMilk">
+                Milk
+                <span slot="end">{{ MilkA }}</span>
+            </ion-item>
+            <ion-item *ngIf="optionSugar">
+                Sugar
+                <span slot="end">{{ SugarA }}</span>
+            </ion-item>
+            <ion-item *ngIf="optionSyrup">
+                Syrup
+                <span slot="end">{{ SyrupA }}</span>
+            </ion-item>
+            <ion-item>
+                SubTotal: <span slot="end">{{ increment }} *  R{{price}}</span>
+            </ion-item>
+            <ion-item>
+                Total: <span slot="end"> R {{ total }}</span>
+            </ion-item>
+        </ion-list>
+        <ion-button expand="full" color="secondary" (click)="createPdf()">Download Inovice</ion-button>
+        <hr>
+    </div>
+</ion-content>
